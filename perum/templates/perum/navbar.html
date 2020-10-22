@@ -1,0 +1,29 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+  <a href="{% url 'home' %}" class="navbar-brand" style="margin-left: 40px">SIPERU</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      {% if request.user.is_staff %}
+      <a class="nav-item nav-link" href="{% url 'home' %}">Dashboard</a>
+      <a class="nav-item nav-link" href="{% url 'pelanggan' %}">Pelanggan</a>
+      <a class="nav-item nav-link" href="{% url 'administrasi' %}">Administrasi</a>
+      <a class="nav-item nav-link" href="{% url 'pemesanan' %}">Pemesanan</a>
+      {% else %}
+      <a class="nav-item nav-link" href="{% url 'profil' %}">Akun</a>
+      <a class="nav-item nav-link" href="{% url 'angsuran' request.user.profile.id %}">Angsuran</a>
+      {% endif %}
+      <a class="nav-item nav-link" href="{% url 'unit' %}">Unit</a>
+    </div>
+  </div>
+
+  {% if request.user.is_staff %}
+  <span style="color: white; margin-right: 7px;">Halo, {{ request.user }}</span>
+  {% else %}
+  <span style="color: white; margin-right: 7px;">Halo, {{ request.user.profile.nama }}</span>
+  {% endif %}
+  <a href="{% url 'logout' %}" class="btn btn-danger">Keluar</a>
+</nav>

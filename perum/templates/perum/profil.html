@@ -1,0 +1,48 @@
+{% extends 'perum/main.html' %}
+
+{% block content %}
+
+	<div class="container card" style="padding: 50px 50px;">
+		<div class="row">
+			<div class="col-md-10">
+				<h2>Informasi Pelanggan</h2>
+			</div>
+			<div class="col-md-2">
+				<a href="{% url 'ubah_pelanggan' request.user.profile.id %}" type="button" class="btn btn-success" style="margin-top: 10px;">Ubah Biodata</a>
+			</div>
+		</div>
+
+		<hr>
+		
+		<h5>
+			<table>
+			<tr>
+				<th>Nama</th>
+				<td>&emsp;:&emsp;</td>
+				<td>{{nama}}</td>
+			</tr>
+			<tr><td>&emsp;</td></tr>
+			<tr>
+				<th>No.Telepon</th>
+				<td>&emsp;:&emsp;</td>
+				<td>{{no_telp}}</td>
+			</tr>
+			<tr><td>&emsp;</td></tr>
+			<tr>
+				<th>Email</th>
+				<td>&emsp;:&emsp;</td>
+				<td>{{email}}</td>
+			</tr>
+			<tr><td>&emsp;</td></tr>
+			<tr>
+				<th>No. Unit</th>
+				<td>&emsp;:&emsp;</td>
+				<td>{{no_unit}}</td>
+			</tr>
+			</table>
+		</h5>
+	</div>
+
+
+
+{% endblock %}

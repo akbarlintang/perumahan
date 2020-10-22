@@ -1,0 +1,56 @@
+{% extends 'perum/main.html' %}
+{% load bootstrap %}
+{% block content %}
+
+<div class="container card" style="padding: 50px 30px;">
+	<h2>Informasi Unit</h2>
+	<hr>
+
+	{% for i in unit %}
+	<div class="row">
+		
+		<div class="col-md-8">
+			<h5>
+				<table>
+					<tr>
+						<th>No. Unit</th>
+						<td>&emsp;:&emsp;</td>
+						<td>{{i.no_unit}}</td>
+					</tr>
+					<tr>
+						<th>Lokasi</th>
+						<td>&emsp;:&emsp;</td>
+						<td>{{i.id_lokasi}}</td>
+					</tr>
+					<tr>
+						<th>Tipe Unit</th>
+						<td>&emsp;:&emsp;</td>
+						<td>{{i.tipe_unit}}</td>
+					</tr>
+					<tr>
+						<th>Status Unit</th>
+						<td>&emsp;:&emsp;</td>
+						<td>{{i.status_rumah}}</td>
+					</tr>
+				</table>
+			</h5>
+		</div>
+		
+		<div class="col-md-4">
+			
+		</div>
+	</div>
+	
+	{% if i.status_rumah == 'Tersedia' %}
+		<a href="{% url 'create_booking' i.id %}" type="button" class="btn btn-md btn-success float-right" style="margin-top: 7px; margin-right: 40px; font-size: 18px;">Pesan Unit</a>
+	{% endif %}
+	{% endfor %}
+
+	<hr>
+
+	<div class="col-3">
+	</div>
+	
+</div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'perum/main.html' %}
+{% load static %}
+{% load bootstrap %}
+{% block content %}
+
+<br>
+<div class="row text-center">
+	<div class="col-md-3">
+		
+	</div>
+
+	<div class="col-md-6" style="text-align: center;">
+		<div class="card card-body">
+			<form action="" method="POST">
+				{% csrf_token %}
+					<br>
+					<a href="{% url 'administrasi' %}" type="button" class="btn btn-sm btn-danger float-left" style="margin-left: 20px;">< Kembali</a>
+					<br><br>
+					<table class="table text-center">
+						<thead>
+							<h2 style="margin-bottom: 30px;">Data Administrasi</h2>
+						</thead>
+						<tbody>
+							<td>{{ form|bootstrap }}</td>
+						</tbody>
+						
+					</table>
+					
+				<input type="submit" class="btn btn-primary" name="Submit" value="Submit" style="margin-bottom: 30px;" />
+				
+			</form>
+		</div>
+	</div>
+</div>
+<br>
+
+{% endblock %}

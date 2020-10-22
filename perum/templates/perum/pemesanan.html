@@ -1,0 +1,45 @@
+{% extends 'perum/main.html' %}
+{% load bootstrap %}
+{% block content %}
+<div class="container card" style="padding: 0 30px; padding-bottom: 50px;">
+	<div class="row" style="margin-bottom: 10px; margin-top: 40px">
+		<div class="col-7">
+			<h2>Pemesanan</h2>
+		</div>
+
+		<div class="col-5">
+		</div>
+	</div>
+
+
+	<table class="table table-striped">
+	  <thead class="thead-dark">
+	    <tr>
+	      <th scope="col" style="text-align: center;">Tanggal</th>
+	      <th scope="col" style="text-align: center;">Nama</th>
+	      <th scope="col" style="text-align: center;">Email</th>
+	      <th scope="col" style="text-align: center;">No. Telp</th>
+	      <th scope="col" style="text-align: center;">No. Unit</th>
+	      <th scope="col" style="text-align: center;">Aksi</th>
+	    </tr>
+	  </thead>
+
+	  {% for i in pemesanan %}
+	  <tbody>
+	    <tr>
+	      <th scope="row" style="text-align: center;">{{i.tanggal}}</th>
+	      <td style="text-align: center;">{{i.nama}}</td>
+	      <td style="text-align: center;">{{i.email}}</td>
+	      <td style="text-align: center;">{{i.no_telp}}</td>
+	      <td style="text-align: center;">{{i.no_unit}}</td>
+	      <td style="text-align: center;">
+	      	<a href="{% url 'hapus_pemesanan' i.id %}" type="button" class="btn btn-sm btn-danger">Hapus</a>
+	      </td>
+	    </tr>
+	  </tbody>
+	  {% endfor %}
+
+	</table>
+</div>
+
+{% endblock %}

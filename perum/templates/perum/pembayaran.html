@@ -1,0 +1,60 @@
+{% extends 'perum/main.html' %}
+
+{% block content %}
+
+<div class="container card" style="padding: 50px 30px;">
+	<h2>Detail Pembayaran</h2>
+	<hr>
+
+	<h5>
+		<table>
+		{% for i in administrasis %}
+		<tr>
+			<th>Nama</th>
+			<td>&emsp;:&emsp;</td>
+			<td>{{i.nama}}</td>
+		</tr>
+		<tr><td>&emsp;</td></tr>
+		<tr>
+			<th>No.Unit</th>
+			<td>&emsp;:&emsp;</td>
+			<td>{{i.no_unit}}</td>
+		</tr>
+		<tr><td>&emsp;</td></tr>
+		<tr>
+			<th>Tanggal</th>
+			<td>&emsp;:&emsp;</td>
+			<td>{{i.tanggal}}</td>
+		</tr>
+		<tr><td>&emsp;</td></tr>
+		<tr>
+			<th>Biaya Angsur</th>
+			<td>&emsp;:&emsp;</td>
+			<td>{{i.biaya_angsur}}</td>
+		</tr>
+		<tr><td>&emsp;</td></tr>
+		<tr>
+			<th>Angsuran ke-</th>
+			<td>&emsp;:&emsp;</td>
+			<td>{{i.angsuran_ke}}</td>
+		</tr>
+		<tr><td>&emsp;</td></tr>
+		<tr>
+			<th>Status Bayar</th>
+			<td>&emsp;:&emsp;</td>
+			<td>{{i.status_bayar}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	</h5>
+	
+
+	<hr>
+
+	<div class="col-3">
+		<a href="{% url 'home' %}" type="button" class="btn btn-sm btn-danger float-left" style="margin-left: 20px;">< Kembali</a>
+	</div>
+	
+</div>
+
+{% endblock %}

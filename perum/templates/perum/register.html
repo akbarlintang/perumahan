@@ -1,0 +1,50 @@
+{% extends 'perum/main_user.html' %}
+{% load bootstrap %}
+{% block content %}
+<div class="row text-center">
+	<div class="col-md-4">
+		
+	</div>
+	<div class="col-md-4" style="text-align: center;">
+		<div class="card card-body">
+			<form method="POST" action="">
+				{% csrf_token %}
+				<table class="table">
+					<thead>
+						<br>
+						<h2>Daftar akun</h2>
+						<br>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{ form.username.label }}</td>
+							<td>{{ form.username }}</td>
+						</tr>
+						<tr>
+							<td>{{ form.email.label }}</td>
+							<td>{{ form.email }}</td>
+						</tr>
+						<tr>
+							<td>{{ form.password1.label }}</td>
+							<td>{{ form.password1 }}</td>
+						</tr>
+						<tr>
+							<td>{{ form.password2.label }}</td>
+							<td>{{ form.password2 }}</td>
+						</tr>
+					</tbody>
+				</table>
+
+
+				
+				<input type="submit" name="Create User" value="Daftar" class="btn btn-md btn-primary">
+			</form>
+			{{ form.errors }}
+
+			<div class="text-center" style="font-size: 16px; margin-top: 20px;">
+				Belum punya akun?<a href="{% url 'login' %}"> Masuk</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

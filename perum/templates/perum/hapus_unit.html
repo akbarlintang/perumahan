@@ -1,0 +1,27 @@
+{% extends 'perum/main.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="row text-center">
+	<div class="col-md-3">
+		
+	</div>
+	<div class="col-md-6" style="text-align: center;">
+		<div class="card card-body">
+			<p>Apakah anda yakin akan menghapus data "{{unit}}"?</p>
+
+				<form action="{% url 'hapus_unit' unit.id %}" method="POST">
+
+				{% csrf_token %}
+
+				<a href="{% url 'unit' %}" class="btn btn-danger">Cancel</a>
+
+				<input type="submit" name="Confirm" value="Hapus" class="btn btn-success">
+			</form>
+		</div>
+	</div>
+</div>
+<br>
+
+{% endblock %}

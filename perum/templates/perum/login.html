@@ -1,0 +1,41 @@
+{% extends 'perum/main_user.html' %}
+{% load bootstrap %}
+{% block content %}
+<div class="row text-center">
+	<div class="col-md-4">
+		
+	</div>
+	<div class="col-md-4" style="text-align: center;">
+		<div class="card card-body">
+			<form method="POST" action="">
+				{% csrf_token %}
+				<table class="table">
+					<thead>
+						<br>
+						<h2>Masuk</h2>
+						<br>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" name="username" placeholder="Username..." class="form-control"></td>
+						</tr>
+						<tr>
+							<td><input type="password" name="password" placeholder="Password..." class="form-control"></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<input type="submit" name="Login User" value="Masuk" class="btn btn-md btn-primary">
+			</form>
+
+			{% for message in messages %}
+				<p id="messages" style="text-align: center; margin-top: 20px; background-color: #ffc107; padding: 20px; color: black">{{message}}</p>
+			{% endfor %}
+
+			<div class="text-center" style="font-size: 16px; margin-top: 20px;">
+				Sudah punya akun?<a href="{% url 'register' %}"> Daftar</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

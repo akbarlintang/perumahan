@@ -1,0 +1,82 @@
+{% extends 'perum/main.html' %}
+{% load bootstrap %}
+{% block content %}
+<div class="container card" style="padding: 0 30px; padding-bottom: 50px;">
+	<div class="row" style="margin-bottom: 10px; margin-top: 40px">
+		<div class="col-7">
+			<h2>Unit</h2>
+		</div>
+
+		<div class="col-5">
+			{% if request.user.is_staff %}
+			<a href="{% url 'create_unit' %}" type="button" class="btn btn-primary float-right" style="margin-top: 7px; margin-right: 10px;">+ Tambah</a>
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="card" style="margin: 12px;">
+		<div style="padding: 0 50px;">
+			<br>
+			<h4>Filter</h4>
+			<form method="get">
+				<div class="row">
+					<div class="col-md-4">
+						{{unitFilter.form.lokasi|bootstrap}}
+					</div>
+					<div class="col-md-3">
+						{{unitFilter.form.tipe|bootstrap}}
+					</div>
+					<div class="col-md-3">
+						{{unitFilter.form.status_rumah|bootstrap}}
+					</div>
+					<div class="col-md-2">
+						<button class="btn btn-primary" type="submit" style="margin: 32px;">Search</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<table class="table table-striped">
+	  <thead class="thead-dark">
+	    <tr>
+	      <th scope="col" style="text-align: center;">No. Unit</th>
+	      <th scope="col" style="text-align: center;">Lokasi</th>
+	      <th scope="col" style="text-align: center;">Tipe</th>
+	      <th scope="col" style="text-align: center;">Status Rumah</th>
+	      <th scope="col" style="text-align: center;">Aksi</th>
+	    </tr>
+	  </thead>
+
+	  {% for i in units %}
+	  <tbody>
+	    <tr>
+	      <th scope="row" style="text-align: center;">{{i.no_unit}}</th>
+	      <td style="text-align: center;">{{i.lokasi}}</td>
+	      <td style="text-align: center;">{{i.tipe}}</td>
+	      <td style="text-align: center;">{{i.status_rumah}}</td>
+	      <td style="text-align: center;">
+
+	      	{% if request.user.is_staff %}
+	      	{% else %}
+	      	{% if i.status_rumah == 'Tersedia' %}
+	      	<a href="{% url 'create_booking' i.id %}" type="button" class="btn btn-sm btn-primary">Pesan</a>
+	      	{% else %}
+	      	<button href="{% url 'create_booking' i.id %}" type="button" class="btn btn-sm btn-primary" disabled>Pesan</button>
+	      	{% endif %}
+	      	{% endif %}
+
+	      	{% if request.user.is_staff %}
+	      	<a href="{% url 'ubah_unit' i.id %}" type="button" class="btn btn-sm btn-success">Ubah</a>
+
+	      	<a href="{% url 'hapus_unit' i.id %}" type="button" class="btn btn-sm btn-danger">Hapus</a>
+	      	{% endif %}
+	      </td>
+	    </tr>
+	  </tbody>
+	  {% endfor %}
+
+	</table>
+</div>
+
+{% endblock %}
